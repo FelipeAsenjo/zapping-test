@@ -1,0 +1,73 @@
+{
+    "availableLanguages": [
+        { "id": 1, "name": "Español", "label": "🇪🇸ES" },
+        { "id": 2, "name": "Portugués", "label": "🇵🇹PR" }
+    ],
+    "availableChannels": [
+        { "id": 1, "channelName": "ESPN", "channelNumber": 1, "currentContent": { "showId": 1, "showName": "Independence Day" }, "iconSrc": "../assets/images/espn_logo.webp"},
+        { "id": 2, "channelName": "ESPN", "channelNumber": 2, "currentContent": { "showId": 2, "showName": "Independence Day" }, "iconSrc": "../assets/images/espn_logo.webp"},
+        { "id": 3, "channelName": "ESPN", "channelNumber": 3, "currentContent": { "showId": 3, "showName": "Independence Day" }, "iconSrc": "../assets/images/espn_logo.webp"},
+        { "id": 4, "channelName": "ESPN", "channelNumber": 4, "currentContent": { "showId": 4, "showName": "Independence Day" }, "iconSrc": "../assets/images/espn_logo.webp"},
+        { "id": 5, "channelName": "ESPN", "channelNumber": 5, "currentContent": { "showId": 5, "showName": "Independence Day" }, "iconSrc": "../assets/images/espn_logo.webp"},
+        { "id": 6, "channelName": "ESPN", "channelNumber": 6, "currentContent": { "showId": 6, "showName": "Independence Day" }, "iconSrc": "../assets/images/espn_logo.webp"},
+        { "id": 7, "channelName": "ESPN", "channelNumber": 7, "currentContent": { "showId": 7, "showName": "Independence Day" }, "iconSrc": "../assets/images/espn_logo.webp"},
+        { "id": 8, "channelName": "ESPN", "channelNumber": 8, "currentContent": { "showId": 8, "showName": "Independence Day" }, "iconSrc": "../assets/images/espn_logo.webp"},
+        { "id": 9, "channelName": "ESPN", "channelNumber": 9, "currentContent": { "showId": 9, "showName": "Independence Day" }, "iconSrc": "../assets/images/espn_logo.webp"},
+        { "id": 10, "channelName": "ESPN", "channelNumber": 10, "currentContent": { "showId": 10, "showName": "Independence Day" }, "iconSrc": "../assets/images/espn_logo.webp"},
+        { "id": 11, "channelName": "ESPN", "channelNumber": 11, "currentContent": { "showId": 11, "showName": "Independence Day" }, "iconSrc": "../assets/images/espn_logo.webp"},
+        { "id": 12, "channelName": "ESPN", "channelNumber": 12, "currentContent": { "showId": 12, "showName": "Independence Day" }, "iconSrc": "../assets/images/espn_logo.webp"},
+        { "id": 13, "channelName": "ESPN", "channelNumber": 13, "currentContent": { "showId": 13, "showName": "Independence Day" }, "iconSrc": "../assets/images/espn_logo.webp"},
+        { "id": 14, "channelName": "ESPN", "channelNumber": 14, "currentContent": { "showId": 14, "showName": "Independence Day" }, "iconSrc": "../assets/images/espn_logo.webp"},
+        { "id": 15, "channelName": "ESPN", "channelNumber": 15, "currentContent": { "showId": 15, "showName": "Independence Day" }, "iconSrc": "../assets/images/espn_logo.webp"},
+        { "id": 16, "channelName": "ESPN", "channelNumber": 16, "currentContent": { "showId": 16, "showName": "Independence Day" }, "iconSrc": "../assets/images/espn_logo.webp"}
+    ],
+    "tvShowDetails": [
+        {
+            "id": 1,
+            "duration": 90,
+            "title": "Independence Day",
+            "releaseDate": "01/01/1996",
+            "titleInt": {
+                "1": "Dia de la independencia",
+                "2": "Dia da Independência"
+            },
+            "classification": "B",
+            "description": {
+                "1": "Descripcion en espanol",
+                "2": "Descripcion en portugues"
+            },
+            "genre": [{ "id": 1, "label": "Ciencia ficcion" }, { "id": 2, "label": "Accion" }]
+        },
+        {
+            "id": 2,
+            "duration": 90,
+            "title": "Independence Day",
+            "releaseDate": "01/01/1996",
+            "titleInt": {
+                "1": "Dia de la independencia",
+                "2": "Dia da Independência"
+            },
+            "classification": "B",
+            "description": {
+                "1": "Descripcion en espanol",
+                "2": "Descripcion en portugues"
+            },
+            "genre": [
+                { 
+                    "id": 1, 
+                    "label": {
+                        "1": "Ciencia ficcion",
+                        "2": "Ciencia ficcion"
+                    } 
+                }, 
+                { 
+                    "id": 2, 
+                    "label": {
+                        "1": "Accion",
+                        "2": "Accion"
+                    }
+                }
+            ]
+        }
+    ]
+}
