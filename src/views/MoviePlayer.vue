@@ -1,9 +1,27 @@
+<script setup>
+import Overlay from '@/components/Overlay.vue'
+import VideoControlOverlay from '@/components/VideoControlOverlay.vue'
+// import { onMounted } from 'vue'
+// import LanguageService from '../services/language.js'
+
+// const languageService = new LanguageService()
+
+// onMounted(async () => {
+//   try {
+//     languageService.getAvailableLanguages() 
+//   } catch(err) {
+//     console.log('error', err)
+//   }
+// })
+</script>
 <template>
   <main class="movie_player--page">
-    <div class="movie_player--player">
-
+    <section class="movie_player--player">
       <img src="../assets/images/playing-movie_bg_image.webp" />
-    </div>
+    </section>
+    <Overlay>
+      <VideoControlOverlay />
+    </Overlay>
   </main>
 </template>
 
@@ -17,5 +35,12 @@
 
 .movie_player--player {
   height: 80%;
+  display: flex;
+  align-items: center;
+
+  img {
+    width: 100vw;
+    height: auto;
+  }
 }
 </style>
