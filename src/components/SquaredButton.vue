@@ -3,8 +3,6 @@
         icon: String,
         url: String
     })
-
-    console.log('url', props.url)
 </script>
 
 <template>

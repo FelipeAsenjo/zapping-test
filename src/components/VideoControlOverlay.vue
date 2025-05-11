@@ -7,6 +7,7 @@ import arrowUp from '../assets/svg/arrow-up.svg'
 import arrowDown from '../assets/svg/arrow-down.svg'
 import arrowLeft from '../assets/svg/arrow-left.svg'
 import arrowRight from '../assets/svg/arrow-right.svg'
+import zappingLogo from '../assets/svg/zapping_logo.svg'
 
 const iconSize = 20
 
@@ -37,6 +38,7 @@ const handleDetailsClick = () => {
       </div>
       <div class="top-right">
 
+        <img :src="zappingLogo" />
       </div>
     </section>
     <section class="bottom">
@@ -92,6 +94,12 @@ const handleDetailsClick = () => {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 
   .top, .bottom .media {
     height: fit-content;
