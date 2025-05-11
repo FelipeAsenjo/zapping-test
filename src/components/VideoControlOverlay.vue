@@ -1,4 +1,5 @@
 <script setup>
+import { computed } from 'vue'
 import RoundedButton from '@/components/RoundedButton.vue'
 import SquaredButtonGroup from '@/components/SquaredButtonGroup.vue'
 import SquaredButton from '@/components/SquaredButton.vue'
@@ -9,7 +10,10 @@ import arrowLeft from '../assets/svg/arrow-left.svg'
 import arrowRight from '../assets/svg/arrow-right.svg'
 import zappingLogo from '../assets/svg/zapping_logo.svg'
 
+import { usePlayerStatusStore } from '@/stores/player'
+
 const iconSize = 20
+const { playerStatus } = usePlayerStatusStore()
 
 const handleTopMenuClick = () => {
   console.log('handleTopMenuClick')
@@ -26,6 +30,11 @@ const handleVolumeClick = () => {
 const handleDetailsClick = () => {
   console.log('handleDetailsClick')
 }
+
+const formattedChannel = computed(() => {
+  const number = playerStatus.selectedChannel.channelNumber;
+  return number >= 10 ? number : `0${number}`;
+});
 </script>
 
 <template>
@@ -35,6 +44,10 @@ const handleDetailsClick = () => {
         <RoundedButton @click="handleTopMenuClick">
           <img src="../assets/svg/top-menu_icon.svg" :width="iconSize" :height="iconSize"/>
         </RoundedButton> 
+        <div class="selected-channel" v-if="!!playerStatus.selectedChannel">
+           <img v-if="playerStatus.selectedChannel?.iconSrc" :src="playerStatus.selectedChannel.iconSrc" />
+           <p>{{ formattedChannel }} | {{ playerStatus.selectedChannel.channelName }}</p>
+        </div>
       </div>
       <div class="top-right">
 
@@ -99,6 +112,21 @@ const handleDetailsClick = () => {
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    .top-left {
+      display: flex;
+      align-items: center;
+
+      .selected-channel {
+        display: flex;
+        align-items: center;
+
+        img {
+          margin-right: $spacing-xs;
+          width: 36px;
+        }
+      }
+    }
   }
 
   .top, .bottom .media {
