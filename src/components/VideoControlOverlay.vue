@@ -1,5 +1,12 @@
 <script setup>
 import RoundedButton from '@/components/RoundedButton.vue'
+import SquaredButtonGroup from '@/components/SquaredButtonGroup.vue'
+import SquaredButton from '@/components/SquaredButton.vue'
+
+import arrowUp from '../assets/svg/arrow-up.svg'
+import arrowDown from '../assets/svg/arrow-down.svg'
+import arrowLeft from '../assets/svg/arrow-left.svg'
+import arrowRight from '../assets/svg/arrow-right.svg'
 
 const iconSize = 20
 
@@ -50,10 +57,27 @@ const handleDetailsClick = () => {
       </div>
       <div class="hotkeys">
         <div class="left">
-
+          <SquaredButtonGroup label="Cambiar">
+            <SquaredButton :url="arrowUp"/>
+            <SquaredButton :url="arrowDown"/>
+          </SquaredButtonGroup> 
+          <SquaredButtonGroup label="Canales">
+            <SquaredButton :url="arrowRight"/>
+          </SquaredButtonGroup> 
+          <SquaredButtonGroup label="Info">
+            <SquaredButton :url="arrowLeft"/>
+          </SquaredButtonGroup> 
+          <SquaredButtonGroup label="Pantalla completa">
+            <SquaredButton icon="F"/>
+          </SquaredButtonGroup> 
+          <SquaredButtonGroup label="Silencio">
+            <SquaredButton icon="M"/>
+          </SquaredButtonGroup> 
         </div>
         <div class="right">
-
+          <SquaredButtonGroup label="Salir">
+            <SquaredButton icon="[ESC]"/>
+          </SquaredButtonGroup> 
         </div>
       </div>
     </section>
@@ -77,6 +101,17 @@ const handleDetailsClick = () => {
   .bottom .media {
     display: flex;
     justify-content: space-between;
+    margin-bottom: $spacing-lg;
+  }
+
+  .bottom .hotkeys {
+    display: flex;
+    justify-content: space-between;
+
+    .left {
+      display: flex;
+      flex-direction: row;
+    }
   }
 
   .no-margin {
