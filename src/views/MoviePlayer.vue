@@ -1,10 +1,20 @@
 <script setup>
+import { onMounted } from 'vue'
+import ChannelService from '@/services/channel.js'
+import LanguageService from '@/services/language.js'
 import Overlay from '@/components/Overlay.vue'
 import VideoControlOverlay from '@/components/VideoControlOverlay.vue'
 import { useVisibilityStore } from '@/stores/visibility.js'
+import { usePlayerStatusStore } from '@/stores/player.js'
+import { useLanguageStore } from '@/stores/language.js'
 import { useMouseMovementListener, useTimeOutListener } from '@/utils/listeners'
 
 const { visibilityStatus, showVideoControls, hideVideoControls } = useVisibilityStore()
+const { playerStatus } = usePlayerStatusStore()
+const { languageStatus } = useLanguageStore()
+
+const channelService = new ChannelService()
+const languageService = new LanguageService()
 
 const { reset: resetOverlayTimeOut } = useTimeOutListener(() => {
   hideVideoControls()
@@ -15,18 +25,14 @@ useMouseMovementListener(() => {
   resetOverlayTimeOut()
 }, 15)
 
-// import { onMounted } from 'vue'
-// import LanguageService from '../services/language.js'
-
-// const languageService = new LanguageService()
-
-// onMounted(async () => {
-//   try {
-//     languageService.getAvailableLanguages() 
-//   } catch(err) {
-//     console.log('error', err)
-//   }
-// })
+onMounted(async () => {
+  try {
+    await channelService.getAvailableChannels()
+    await languageService.getAvailableLanguages()
+  } catch(err) {
+    console.log('error', err)
+  }
+})
 </script>
 
 <template>
