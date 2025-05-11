@@ -7,7 +7,7 @@ export const usePlayerStatusStore = defineStore('player', () => {
     volume: 60,
     isMuted: false,
     isFullScreen: false,
-    selectedChannel: 0,
+    selectedChannel: {},
     availableChannels: [],
   })
 

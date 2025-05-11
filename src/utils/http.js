@@ -7,10 +7,13 @@ class Http {
         this.currentEnv = import.meta.env.MODE
     }
 
-    useGet(url, query = '') {
+    async useGet(url, query = '') {
         if(this.currentEnv === envs.DEV) {
-            console.log('mockData', mockData[url])
-            return
+            try {
+                return mockData[url]
+            } catch(err) {
+                console.log('error', err)
+            }
         }
     }
 }
