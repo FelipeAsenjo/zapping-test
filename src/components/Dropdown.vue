@@ -2,6 +2,9 @@
 import { ref } from 'vue'
 import caretDown from '../assets/svg/caret-down.svg'
 import caretUp from '../assets/svg/caret-up.svg'
+import LanguageService from '@/services/language'
+
+const languageService = new LanguageService()
 
 const props = defineProps({
     onSelect: Function,
@@ -17,6 +20,7 @@ const toggleActivity = () => {
 const handleDropdownClick = (lang) => {
     props.onSelect(lang)
     toggleActivity()
+    languageService.getTranslations()
 }
 </script>
 

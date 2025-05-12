@@ -13,8 +13,18 @@ class LanguageService {
         const { setSelectedLanguage, setAvailableLanguages } = this.languageStore
         const availableLanguages = await this.http.useGet(model.AVAILABLE_LANGUAGES)
 
-        setSelectedLanguage(availableLanguages[0])
+        if(!Object.keys(this.languageStore.languageStatus.selectedLanguage).length) {
+            setSelectedLanguage(availableLanguages[0])
+        }
         setAvailableLanguages(availableLanguages)
+    }
+
+    async getTranslations() {
+        const { languageStatus, setTranslations } = this.languageStore
+        const translations = await this.http.useGet(model.I18n)
+        const selectedLanguage = languageStatus.selectedLanguage.label
+
+        setTranslations(translations[selectedLanguage])
     }
 }
 

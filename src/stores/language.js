@@ -5,6 +5,7 @@ export const useLanguageStore = defineStore('language', () => {
   const languageStatus = reactive({
     selectedLanguage: {},
     availableLanguages: [],
+    translations: {}
   })
 
   function setSelectedLanguage(selectedLanguage) {
@@ -15,5 +16,9 @@ export const useLanguageStore = defineStore('language', () => {
     languageStatus.availableLanguages = availableLanguages
   }
 
-  return { languageStatus, setSelectedLanguage, setAvailableLanguages }
+  function setTranslations(translations) {
+    languageStatus.translations = { ...translations }
+  }
+
+  return { languageStatus, setSelectedLanguage, setAvailableLanguages, setTranslations }
 })

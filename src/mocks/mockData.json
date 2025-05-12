@@ -69,5 +69,57 @@
                 }
             ]
         }
-    ]
+    ],
+    "I18n": {
+        "ES": {
+            "homePage": {
+                "mediaControl": {
+                    "hotkeyLabels": {
+                        "change": "Cambiar",
+                        "channels": "Canales",
+                        "info": "Info",
+                        "fullScreen": "Pantalla Completa",
+                        "mute": "Silencio",
+                        "exit": "Salir"
+                    }
+                }
+            },
+            "detailsPage": {
+                "movieDetails": {
+                    "title": "El día de la independencia",
+                    "originalTitle": "Título original",
+                    "tags": {
+                        "scienceFiction": "Ciencia ficción",
+                        "action": "Acción"
+                    },
+                    "details": "Los alienígenas están en camino y pretenden invadir y destruir la Tierra. Nuestra mejor arma es nuestra voluntad de vivir."
+                }
+            }
+        },
+        "PR": {
+            "homePage": {
+                "mediaControl": {
+                    "hotkeyLabels": {
+                        "change": "Mudar",
+                        "channels": "Canais",
+                        "info": "Info",
+                        "fullScreen": "Tela inteira",
+                        "mute": "Silêncio",
+                        "exit": "Sair"
+                    }
+                }
+            },
+            "detailsPage": {
+                "movieDetails": {
+                    "title": "Independence Day",
+                    "originalTitle": "",
+                    "tags": {
+                        "scienceFiction": "Ficção científica",
+                        "action": "Ação"
+                    },
+                    "details": "Los alienígenas están en camino y pretenden invadir y destruir la Tierra. Nuestra mejor arma es nuestra voluntad de vivir."
+                }
+            }
+        }
+    }
 }

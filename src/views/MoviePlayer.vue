@@ -38,6 +38,7 @@ onMounted(async () => {
   try {
     await channelService.getAvailableChannels()
     await languageService.getAvailableLanguages()
+    await languageService.getTranslations()
   } catch(err) {
     console.log('error', err)
   }

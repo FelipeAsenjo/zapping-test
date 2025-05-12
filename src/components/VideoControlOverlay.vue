@@ -42,7 +42,6 @@ const handleVolumeClick = () => {
 }
 
 const handleDetailsClick = () => {
-  console.log('handleDetailsClick')
   router.push('/details')
 }
 
@@ -99,25 +98,25 @@ const formattedChannel = computed(() => {
       </div>
       <div class="hotkeys">
         <div class="left">
-          <SquaredButtonGroup label="Cambiar">
+          <SquaredButtonGroup :label="languageStatus.translations.homePage.mediaControl.hotkeyLabels.change">
             <SquaredButton :url="arrowUp"/>
             <SquaredButton :url="arrowDown"/>
           </SquaredButtonGroup> 
-          <SquaredButtonGroup label="Canales">
+          <SquaredButtonGroup :label="languageStatus.translations.homePage.mediaControl.hotkeyLabels.channels">
             <SquaredButton :url="arrowRight"/>
           </SquaredButtonGroup> 
-          <SquaredButtonGroup label="Info">
+          <SquaredButtonGroup :label="languageStatus.translations.homePage.mediaControl.hotkeyLabels.info">
             <SquaredButton :url="arrowLeft"/>
           </SquaredButtonGroup> 
-          <SquaredButtonGroup label="Pantalla completa">
+          <SquaredButtonGroup :label="languageStatus.translations.homePage.mediaControl.hotkeyLabels.fullScreen">
             <SquaredButton icon="F"/>
           </SquaredButtonGroup> 
-          <SquaredButtonGroup label="Silencio">
+          <SquaredButtonGroup :label="languageStatus.translations.homePage.mediaControl.hotkeyLabels.mute">
             <SquaredButton icon="M"/>
           </SquaredButtonGroup> 
         </div>
         <div class="right">
-          <SquaredButtonGroup label="Salir">
+          <SquaredButtonGroup :label="languageStatus.translations.homePage.mediaControl.hotkeyLabels.exit">
             <SquaredButton icon="[ESC]"/>
           </SquaredButtonGroup> 
         </div>
