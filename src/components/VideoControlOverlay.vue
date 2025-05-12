@@ -1,5 +1,7 @@
 <script setup>
 import { computed } from 'vue'
+import { useRouter } from 'vue-router';
+
 import RoundedButton from '@/components/RoundedButton.vue'
 import SquaredButtonGroup from '@/components/SquaredButtonGroup.vue'
 import SquaredButton from '@/components/SquaredButton.vue'
@@ -15,6 +17,7 @@ import { usePlayerStatusStore } from '@/stores/player'
 import { useLanguageStore } from '@/stores/language'
 import { useVisibilityStore } from '@/stores/visibility'
 
+const router = useRouter();
 const iconSize = 20
 const { playerStatus } = usePlayerStatusStore()
 const { languageStatus, setSelectedLanguage } = useLanguageStore()
@@ -40,6 +43,7 @@ const handleVolumeClick = () => {
 
 const handleDetailsClick = () => {
   console.log('handleDetailsClick')
+  router.push('/details')
 }
 
 const handleLanguageSelection = (selectedLang) => {
