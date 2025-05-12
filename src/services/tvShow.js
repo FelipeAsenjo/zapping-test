@@ -7,8 +7,9 @@ class TvShowService {
        this.http = new Http() 
     }
 
-    getShowDetails() {
-        this.http.useGet(model.TV_SHOW_DETAILS)
+    async getShowDetails() {
+        const res = await this.http.useGet(model.TV_SHOW_DETAILS)
+        return res
     }
 }
 
