@@ -13,6 +13,11 @@ const isActive = ref(false)
 const toggleActivity = () => {
     isActive.value = !isActive.value
 }
+
+const handleDropdownClick = (lang) => {
+    props.onSelect(lang)
+    toggleActivity()
+}
 </script>
 
 <template>
@@ -24,7 +29,7 @@ const toggleActivity = () => {
         </button>
         <Transition name="fade">
             <ul v-if="isActive" class="dropdown-options">
-                <li v-for="lang in languages" :key="lang.id" @click="onSelect(lang)">{{ `${ lang.flag } ${ lang.name }` }}</li>
+                <li v-for="lang in languages" :key="lang.id" @click="handleDropdownClick(lang)">{{ `${ lang.flag } ${ lang.name }` }}</li>
             </ul>
         </Transition>
     </div>
