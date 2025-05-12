@@ -20,8 +20,12 @@ export const useVisibilityStore = defineStore('visibility', () => {
     visibilityStatus.areControlsVisible = false
   }
 
-  function toggleChannelsVisibility() {
-    visibilityStatus.areChannelsVisible = !visibilityStatus.areChannelsVisible
+  function showChannelsMenu() {
+    visibilityStatus.areChannelsVisible = true
+  }
+
+  function hideChannelsMenu() {
+    visibilityStatus.areChannelsVisible = false
   }
 
   function toggleVolumeBarVisibility() {
@@ -30,7 +34,8 @@ export const useVisibilityStore = defineStore('visibility', () => {
 
   return { 
     visibilityStatus, 
-    toggleChannelsVisibility, 
+    showChannelsMenu, 
+    hideChannelsMenu, 
     toggleControlsVisibility, 
     showVideoControls,
     hideVideoControls,

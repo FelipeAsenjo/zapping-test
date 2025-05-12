@@ -18,10 +18,16 @@ import { useVisibilityStore } from '@/stores/visibility'
 const iconSize = 20
 const { playerStatus } = usePlayerStatusStore()
 const { languageStatus, setSelectedLanguage } = useLanguageStore()
-const { visibilityStatus, toggleVolumeBarVisibility } = useVisibilityStore()
+const { 
+  visibilityStatus, 
+  toggleVolumeBarVisibility, 
+  hideVideoControls,
+  showChannelsMenu,
+} = useVisibilityStore()
 
 const handleTopMenuClick = () => {
-  console.log('handleTopMenuClick')
+  hideVideoControls()
+  showChannelsMenu()
 }
 
 const handlePlayClick = () => {
