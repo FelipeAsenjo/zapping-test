@@ -2,15 +2,20 @@
 import { usePlayerStatusStore } from '@/stores/player'
 import { useVisibilityStore } from '@/stores/visibility'
 
-const { visibilityStatus } = useVisibilityStore()
-const { playerStatus } = usePlayerStatusStore()
+const { visibilityStatus, hideChannelsMenu } = useVisibilityStore()
+const { playerStatus, setChannel } = usePlayerStatusStore()
+
+const handleSelectChannel = (newChannel) => {
+    setChannel(newChannel)
+    hideChannelsMenu()
+}
 
 </script>
 
 <template>
     <section class="channels-control">
         <ul class="channels-list">
-            <li v-for="channel in playerStatus.availableChannels">
+            <li v-for="channel in playerStatus.availableChannels" @click="handleSelectChannel(channel)">
                 <span>{{ channel.channelNumber }}</span>
                 <img :src="channel.iconSrc" alt="Channel Icon">
                 <span>{{ channel.channelName }}</span>
