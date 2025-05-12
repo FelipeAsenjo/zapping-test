@@ -13,10 +13,12 @@ import zappingLogo from '../assets/svg/zapping_logo.svg'
 
 import { usePlayerStatusStore } from '@/stores/player'
 import { useLanguageStore } from '@/stores/language'
+import { useVisibilityStore } from '@/stores/visibility'
 
 const iconSize = 20
 const { playerStatus } = usePlayerStatusStore()
 const { languageStatus, setSelectedLanguage } = useLanguageStore()
+const { visibilityStatus, toggleVolumeBarVisibility } = useVisibilityStore()
 
 const handleTopMenuClick = () => {
   console.log('handleTopMenuClick')
@@ -27,7 +29,7 @@ const handlePlayClick = () => {
 }
 
 const handleVolumeClick = () => {
-  console.log('handleVolumeClick')
+  toggleVolumeBarVisibility()
 }
 
 const handleDetailsClick = () => {
@@ -72,6 +74,9 @@ const formattedChannel = computed(() => {
           <RoundedButton @click="handleVolumeClick">
             <img src="../assets/svg/volume_icon.svg" :width="iconSize" :height="iconSize"/>
           </RoundedButton> 
+          <div v-if="visibilityStatus.isVolumeBarVisible" class="volume-bar">
+            <div class="level"></div>
+          </div>
         </div>
         <div class="right">
           <RoundedButton class="no-margin" @click="handleDetailsClick">
@@ -155,6 +160,27 @@ const formattedChannel = computed(() => {
     display: flex;
     justify-content: space-between;
     margin-bottom: $spacing-lg;
+
+    .left {
+      display: flex;
+      align-items: center;
+    }
+
+    .volume-bar {
+      position: relative;
+      width: 200px;
+      height: 8px;
+      background-color: $color-gray-200;
+      border-radius: $radius-sm;
+
+      .level {
+        position: absolute;
+        background-color: $color-primary;
+        height: 8px;
+        width: 60%;
+        border-radius: $radius-sm;
+      }
+    }
   }
 
   .bottom .hotkeys {
