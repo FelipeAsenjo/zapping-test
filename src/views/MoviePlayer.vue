@@ -1,7 +1,5 @@
 <script setup>
 import { onMounted } from 'vue'
-import ChannelService from '@/services/channel.js'
-import LanguageService from '@/services/language.js'
 import Overlay from '@/components/Overlay.vue'
 import OverlayHorizontal from '@/components/OverlayHorizontal.vue'
 import VideoControlOverlay from '@/components/VideoControlOverlay.vue'
@@ -14,9 +12,6 @@ import { useMouseMovementListener, useTimeOutListener, useKeyListener } from '@/
 const { visibilityStatus, showVideoControls, hideVideoControls } = useVisibilityStore()
 const { playerStatus } = usePlayerStatusStore()
 const { languageStatus } = useLanguageStore()
-
-const channelService = new ChannelService()
-const languageService = new LanguageService()
 
 const { reset: resetOverlayTimeOut } = useTimeOutListener(() => {
   hideVideoControls()
@@ -33,16 +28,6 @@ useKeyListener(() => {
 
   hideVideoControls()
 }, ['Escape'])
-
-onMounted(async () => {
-  try {
-    await channelService.getAvailableChannels()
-    await languageService.getAvailableLanguages()
-    await languageService.getTranslations()
-  } catch(err) {
-    console.log('error', err)
-  }
-})
 </script>
 
 <template>

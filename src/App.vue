@@ -1,5 +1,21 @@
 <script setup>
+import { onMounted } from 'vue'
 import { RouterLink, RouterView } from 'vue-router'
+import ChannelService from '@/services/channel.js'
+import LanguageService from '@/services/language.js'
+
+const channelService = new ChannelService()
+const languageService = new LanguageService()
+
+onMounted(async () => {
+  try {
+    await channelService.getAvailableChannels()
+    await languageService.getAvailableLanguages()
+    await languageService.getTranslations()
+  } catch(err) {
+    console.log('error', err)
+  }
+})
 </script>
 
 <template>
