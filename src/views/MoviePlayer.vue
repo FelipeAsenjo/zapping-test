@@ -3,7 +3,9 @@ import { onMounted } from 'vue'
 import ChannelService from '@/services/channel.js'
 import LanguageService from '@/services/language.js'
 import Overlay from '@/components/Overlay.vue'
+import OverlayHorizontal from '@/components/OverlayHorizontal.vue'
 import VideoControlOverlay from '@/components/VideoControlOverlay.vue'
+import ChannelSelectionOverlay from '@/components/ChannelSelectionOverlay.vue'
 import { useVisibilityStore } from '@/stores/visibility.js'
 import { usePlayerStatusStore } from '@/stores/player.js'
 import { useLanguageStore } from '@/stores/language.js'
@@ -21,6 +23,7 @@ const { reset: resetOverlayTimeOut } = useTimeOutListener(() => {
 }, 5000)
 
 useMouseMovementListener(() => {
+  if(visibilityStatus.areChannelsVisible) return
   showVideoControls()
   resetOverlayTimeOut()
 }, 15)
@@ -44,6 +47,11 @@ onMounted(async () => {
       <Overlay v-if="visibilityStatus.areControlsVisible">
         <VideoControlOverlay />
       </Overlay>
+    </Transition>
+    <Transition name="fade">
+      <OverlayHorizontal v-if="visibilityStatus.areChannelsVisible">
+        <ChannelSelectionOverlay />
+      </OverlayHorizontal>
     </Transition>
   </main>
 </template>
