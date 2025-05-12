@@ -3,6 +3,7 @@ import { computed } from 'vue'
 import RoundedButton from '@/components/RoundedButton.vue'
 import SquaredButtonGroup from '@/components/SquaredButtonGroup.vue'
 import SquaredButton from '@/components/SquaredButton.vue'
+import Dropdown from '@/components/Dropdown.vue'
 
 import arrowUp from '../assets/svg/arrow-up.svg'
 import arrowDown from '../assets/svg/arrow-down.svg'
@@ -11,9 +12,11 @@ import arrowRight from '../assets/svg/arrow-right.svg'
 import zappingLogo from '../assets/svg/zapping_logo.svg'
 
 import { usePlayerStatusStore } from '@/stores/player'
+import { useLanguageStore } from '@/stores/language'
 
 const iconSize = 20
 const { playerStatus } = usePlayerStatusStore()
+const { languageStatus } = useLanguageStore()
 
 const handleTopMenuClick = () => {
   console.log('handleTopMenuClick')
@@ -29,6 +32,10 @@ const handleVolumeClick = () => {
 
 const handleDetailsClick = () => {
   console.log('handleDetailsClick')
+}
+
+const handleLanguageSelection = () => {
+  console.log('handleLanguageSelection')
 }
 
 const formattedChannel = computed(() => {
@@ -50,7 +57,9 @@ const formattedChannel = computed(() => {
         </div>
       </div>
       <div class="top-right">
-
+        <Dropdown :onSelect="handleLanguageSelection" :languages="languageStatus.availableLanguages">
+          <p>{{ `${languageStatus.selectedLanguage.flag} ${languageStatus.selectedLanguage.label}` }}</p>
+        </Dropdown>
         <img :src="zappingLogo" />
       </div>
     </section>
@@ -125,6 +134,14 @@ const formattedChannel = computed(() => {
           margin-right: $spacing-xs;
           width: 36px;
         }
+      }
+    }
+
+    .top-right {
+      display: flex;
+
+      p {
+        margin-right: $spacing-xs;
       }
     }
   }
