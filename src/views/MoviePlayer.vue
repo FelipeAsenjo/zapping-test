@@ -9,7 +9,7 @@ import ChannelSelectionOverlay from '@/components/ChannelSelectionOverlay.vue'
 import { useVisibilityStore } from '@/stores/visibility.js'
 import { usePlayerStatusStore } from '@/stores/player.js'
 import { useLanguageStore } from '@/stores/language.js'
-import { useMouseMovementListener, useTimeOutListener } from '@/utils/listeners'
+import { useMouseMovementListener, useTimeOutListener, useKeyListener } from '@/utils/listeners'
 
 const { visibilityStatus, showVideoControls, hideVideoControls } = useVisibilityStore()
 const { playerStatus } = usePlayerStatusStore()
@@ -27,6 +27,12 @@ useMouseMovementListener(() => {
   showVideoControls()
   resetOverlayTimeOut()
 }, 15)
+
+useKeyListener(() => {
+  if(!visibilityStatus.areControlsVisible) return
+
+  hideVideoControls()
+}, ['Escape'])
 
 onMounted(async () => {
   try {

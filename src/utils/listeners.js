@@ -3,7 +3,7 @@ import { onMounted, onUnmounted } from 'vue'
 export function useKeyListener(callback, keys = []) {
     function handleKey(e) {
         if (keys.length === 0 || keys.includes(e.key)) {
-        callback(e)
+            callback(e)
         }
     }
 
