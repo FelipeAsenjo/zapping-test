@@ -130,9 +130,6 @@ const movieInfo = computed(() => {
         margin-bottom: $spacing-lg;
       }
 
-      .description {
-        // right: 62px;
-      }
     }
 
     @media (max-width: 780px) {

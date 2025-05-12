@@ -208,6 +208,10 @@ const formattedChannel = computed(() => {
   .no-margin {
     margin: 0;
   }
+
+  @media (max-width: 780px) {
+    padding: $spacing-xs $spacing-xs $spacing-xs $spacing-xs;
+  }
 }
 
 .fade-enter-active,
