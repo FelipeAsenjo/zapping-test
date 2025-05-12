@@ -16,7 +16,7 @@ import { useLanguageStore } from '@/stores/language'
 
 const iconSize = 20
 const { playerStatus } = usePlayerStatusStore()
-const { languageStatus } = useLanguageStore()
+const { languageStatus, setSelectedLanguage } = useLanguageStore()
 
 const handleTopMenuClick = () => {
   console.log('handleTopMenuClick')
@@ -34,8 +34,8 @@ const handleDetailsClick = () => {
   console.log('handleDetailsClick')
 }
 
-const handleLanguageSelection = () => {
-  console.log('handleLanguageSelection')
+const handleLanguageSelection = (selectedLang) => {
+  setSelectedLanguage(selectedLang)
 }
 
 const formattedChannel = computed(() => {
