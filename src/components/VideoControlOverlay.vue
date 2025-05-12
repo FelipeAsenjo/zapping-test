@@ -84,9 +84,12 @@ const formattedChannel = computed(() => {
           <RoundedButton @click="handleVolumeClick">
             <img src="../assets/svg/volume_icon.svg" :width="iconSize" :height="iconSize"/>
           </RoundedButton> 
-          <div v-if="visibilityStatus.isVolumeBarVisible" class="volume-bar">
-            <div class="level"></div>
-          </div>
+
+          <Transition name="fade">
+            <div v-if="visibilityStatus.isVolumeBarVisible" class="volume-bar">
+              <div class="level"></div>
+            </div>
+          </Transition>
         </div>
         <div class="right">
           <RoundedButton class="no-margin" @click="handleDetailsClick">
@@ -206,5 +209,15 @@ const formattedChannel = computed(() => {
   .no-margin {
     margin: 0;
   }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
