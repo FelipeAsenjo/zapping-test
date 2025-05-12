@@ -38,7 +38,7 @@ onMounted(async () => {
 <template>
   <main class="movie_player--page">
     <section class="movie_player--player">
-      <img src="../assets/images/playing-movie_bg_image.webp" />
+      <img src="/images/playing-movie_bg_image.webp" />
     </section>
     <Transition name="fade">
       <Overlay v-if="visibilityStatus.areControlsVisible">
@@ -63,6 +63,7 @@ onMounted(async () => {
 
   img {
     width: 100vw;
+    max-width: 1440px;
     height: auto;
   }
 }
