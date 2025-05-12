@@ -1,14 +1,7 @@
-# zapping-test
+# Zapping-test
 
-This template should help get you started developing with Vue 3 in Vite.
-
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
+En caso de presentar alguna incompatibilidad, este proyecto fue creado con Node 22.
+## Clone the repository
 
 ## Project Setup
 
@@ -26,10 +19,4 @@ yarn dev
 
 ```sh
 yarn build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-yarn test:unit
 ```
