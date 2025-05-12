@@ -87,11 +87,11 @@
             "detailsPage": {
                 "movieDetails": {
                     "title": "El día de la independencia",
-                    "originalTitle": "Título original",
-                    "tags": {
-                        "scienceFiction": "Ciencia ficción",
-                        "action": "Acción"
-                    },
+                    "originalTitle": "Independence Day",
+                    "releaseYear": 1996,
+                    "classification": "B",
+                    "duration": "2h 25min",
+                    "tags": ["Ciencia ficción", "Acción"],
                     "details": "Los alienígenas están en camino y pretenden invadir y destruir la Tierra. Nuestra mejor arma es nuestra voluntad de vivir."
                 }
             }
@@ -111,13 +111,13 @@
             },
             "detailsPage": {
                 "movieDetails": {
-                    "title": "Independence Day",
-                    "originalTitle": "",
-                    "tags": {
-                        "scienceFiction": "Ficção científica",
-                        "action": "Ação"
-                    },
-                    "details": "Los alienígenas están en camino y pretenden invadir y destruir la Tierra. Nuestra mejor arma es nuestra voluntad de vivir."
+                    "title": "",
+                    "originalTitle": "Independence Day",
+                    "releaseYear": 1996,
+                    "classification": "B",
+                    "duration": "2h 25min",
+                    "tags": ["Ficção científica", "Ação"],
+                    "details": "Os extraterrestres estão em camino é sua meta é invadir e destroir a Terra, Para lutar com tecnologia superior, a arma da humanidade é a vontade de viver."
                 }
             }
         }
