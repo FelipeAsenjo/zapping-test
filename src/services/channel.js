@@ -18,7 +18,6 @@ class ChannelService {
             if(a.channelNumber > b.channelNumber) return 1
             return 0
         })
-        console.log('sortedChannels', sortedChannels)
 
         setAvailableChannels(sortedChannels)
         setChannel(sortedChannels[0])
