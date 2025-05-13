@@ -27,7 +27,7 @@ useMouseMovementListener(() => {
 }, 15)
 
 const findChannelIndex = (availableChannels, selectedChannel) => {
-  const channelIdx = availableChannels.findIndex(ch => ch.id === selectedChannel.id)
+  const channelIdx = availableChannels.findIndex(ch => ch.number === selectedChannel.number)
   return channelIdx === -1 ? 0 : channelIdx
 }
 
