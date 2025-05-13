@@ -1,17 +1,17 @@
 import Http from "@/utils/http"
-import { model } from "../../CONST"
+import { model, url } from "../../CONST"
 import { usePlayerStatusStore } from "@/stores/player"
 
 class ChannelService {
 
     constructor() {
-       this.http = new Http() 
-       this.playerStore = usePlayerStatusStore()
+        this.http = new Http() 
+        this.playerStore = usePlayerStatusStore()
     }
 
     async getAvailableChannels() {
         const { setAvailableChannels, setChannel } = this.playerStore
-        const availableChannels = await this.http.useGet(model.AVAILABLE_CHANNELS)
+        const availableChannels = await this.http.useGet(url.ZAPPING_CHANNELS, true)
 
         const sortedChannels = availableChannels.sort((a, b) => {
             if(a.number < b.number) return -1

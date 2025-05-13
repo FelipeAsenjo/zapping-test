@@ -54,7 +54,9 @@ const handleSelectChannel = (newChannel) => {
             }
 
             img {
-                padding: 0 calc($spacing-sm - 2px);
+                margin: 0 calc($spacing-sm - 2px);
+                height: 48px;
+                border-radius: calc($radius-sm * 2);
             }
         }
    }
