@@ -8,13 +8,7 @@ class Http {
     }
 
     async useGet(url, getRealData = false, query = '') {
-        if(this.currentEnv === envs.DEV && !getRealData) {
-            try {
-                return mockData[url]
-            } catch(err) {
-                console.log('error', err)
-            }
-        } else {
+        if(getRealData) {
             try {
                 const res = await fetch(url)
                 const { data } = await res.json()
@@ -23,7 +17,23 @@ class Http {
             } catch(err) {
                 console.log('error', err)
             }
+        } else {
+            try {
+                return mockData[url]
+            } catch(err) {
+                console.log('error', err)
+            }
         }
+        // if(this.currentEnv === envs.DEV || !getRealData) {
+        //     try {
+        //         return mockData[url]
+        //     } catch(err) {
+        //         console.log('error', err)
+        //     }
+        // } else {
+        //     console.log('HERE 3')
+
+        // }
     }
 }
 
