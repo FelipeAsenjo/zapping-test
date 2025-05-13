@@ -24,16 +24,6 @@ class Http {
                 console.log('error', err)
             }
         }
-        // if(this.currentEnv === envs.DEV || !getRealData) {
-        //     try {
-        //         return mockData[url]
-        //     } catch(err) {
-        //         console.log('error', err)
-        //     }
-        // } else {
-        //     console.log('HERE 3')
-
-        // }
     }
 }
 
