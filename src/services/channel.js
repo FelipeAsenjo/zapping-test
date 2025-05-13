@@ -13,8 +13,15 @@ class ChannelService {
         const { setAvailableChannels, setChannel } = this.playerStore
         const availableChannels = await this.http.useGet(model.AVAILABLE_CHANNELS)
 
-        setAvailableChannels(availableChannels)
-        setChannel(availableChannels[0])
+        const sortedChannels = availableChannels.sort((a, b) => {
+            if(a.channelNumber < b.channelNumber) return -1
+            if(a.channelNumber > b.channelNumber) return 1
+            return 0
+        })
+        console.log('sortedChannels', sortedChannels)
+
+        setAvailableChannels(sortedChannels)
+        setChannel(sortedChannels[0])
     }
 }
 
