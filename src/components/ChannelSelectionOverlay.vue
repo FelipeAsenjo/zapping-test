@@ -16,9 +16,9 @@ const handleSelectChannel = (newChannel) => {
     <section class="channels-control">
         <ul class="channels-list">
             <li v-for="channel in playerStatus.availableChannels" @click="handleSelectChannel(channel)">
-                <span>{{ channel.channelNumber }}</span>
-                <img :src="channel.iconSrc" alt="Channel Icon">
-                <span>{{ channel.channelName }}</span>
+                <span>{{ channel.number }}</span>
+                <img :src="channel.logo_color" alt="Channel Icon">
+                <span>{{ channel.name }}</span>
             </li>
         </ul>
     </section>

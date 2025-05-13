@@ -52,7 +52,7 @@ const handleLanguageSelection = (selectedLang) => {
 }
 
 const formattedChannel = computed(() => {
-  const number = playerStatus.selectedChannel.channelNumber;
+  const number = playerStatus.selectedChannel.number;
   return number >= 10 ? number : `0${number}`;
 });
 
@@ -99,8 +99,8 @@ onUnmounted(() => {
           <img src="../assets/svg/top-menu_icon.svg" :width="iconSize" :height="iconSize"/>
         </RoundedButton> 
         <div class="selected-channel" v-if="!!playerStatus.selectedChannel">
-           <img v-if="playerStatus.selectedChannel?.iconSrc" :src="playerStatus.selectedChannel.iconSrc" />
-           <p>{{ formattedChannel }} | {{ playerStatus.selectedChannel.channelName }}</p>
+           <img v-if="playerStatus.selectedChannel?.logo_color" :src="playerStatus.selectedChannel.logo_color" />
+           <p>{{ formattedChannel }} | {{ playerStatus.selectedChannel.name }}</p>
         </div>
       </div>
       <div class="top-right">

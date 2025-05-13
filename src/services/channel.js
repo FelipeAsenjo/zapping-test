@@ -14,8 +14,8 @@ class ChannelService {
         const availableChannels = await this.http.useGet(model.AVAILABLE_CHANNELS)
 
         const sortedChannels = availableChannels.sort((a, b) => {
-            if(a.channelNumber < b.channelNumber) return -1
-            if(a.channelNumber > b.channelNumber) return 1
+            if(a.number < b.number) return -1
+            if(a.number > b.number) return 1
             return 0
         })
 
