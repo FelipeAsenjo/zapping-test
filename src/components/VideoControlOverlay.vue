@@ -93,6 +93,7 @@ onUnmounted(() => {
   window.removeEventListener('mousemove', onDrag)
   window.removeEventListener('mouseup', stopDrag)
 })
+console.log(playerStatus)
 </script>
 
 <template>
@@ -118,10 +119,12 @@ onUnmounted(() => {
       <div class="media">
         <div class="left">
           <RoundedButton @click="handlePlayClick">
-            <img src="../assets/svg/play_icon.svg" :width="iconSize" :height="iconSize"/>
+            <img v-if="!playerStatus.isPlaying" src="../assets/svg/play_icon.svg" :width="iconSize" :height="iconSize"/>
+            <img v-else src="/images/pause.png" :width="iconSize" :height="iconSize"/>
           </RoundedButton> 
           <RoundedButton @click="handleVolumeClick">
-            <img src="../assets/svg/volume_icon.svg" :width="iconSize" :height="iconSize"/>
+            <img v-if="!playerStatus.isMuted" src="../assets/svg/volume_icon.svg" :width="iconSize" :height="iconSize"/>
+            <img v-else src="/images/mute.png" :width="iconSize" :height="iconSize"/>
           </RoundedButton> 
 
           <Transition name="fade">
