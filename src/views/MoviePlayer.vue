@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, watch, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import Overlay from '@/components/Overlay.vue'
 import OverlayHorizontal from '@/components/OverlayHorizontal.vue'
@@ -105,6 +105,17 @@ useKeyListener((e) => {
   }
 }, ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Escape', 'm', 'f'])
 
+watch(() => playerStatus.volume, (newVolume) => {
+  if (videoRef.value) {
+    videoRef.value.volume = newVolume / 100
+  }
+})
+
+onMounted(() => {
+  if (videoRef.value) {
+    videoRef.value.volume = playerStatus.volume / 100
+  }
+})
 </script>
 
 <template>
