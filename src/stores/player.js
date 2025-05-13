@@ -3,7 +3,7 @@ import { defineStore } from 'pinia'
 
 export const usePlayerStatusStore = defineStore('player', () => {
   const playerStatus = reactive({
-    stopped: false,
+    isPlaying: false,
     volume: 60,
     isMuted: false,
     isFullScreen: false,
@@ -36,16 +36,16 @@ export const usePlayerStatusStore = defineStore('player', () => {
     playerStatus.volume = volume
   }
 
-  function togglePlay() {
-    playerStatus.stopped = !playerStatus.stopped
+  function togglePlayVideo() {
+    playerStatus.isPlaying = !playerStatus.isPlaying
   }
 
-  function toggleMute() {
-    playerStatus.stopped = !playerStatus.stopped
+  function toggleVideoMute() {
+    playerStatus.isMuted = !playerStatus.isMuted
   }
 
-  function toggleFullScren() {
-    playerStatus.stopped = !playerStatus.stopped
+  function toggleVideoFullScreen() {
+    playerStatus.isFullScreen = !playerStatus.isFullScreen
   }
 
   function setChannel(selectedChannel) {
@@ -58,9 +58,9 @@ export const usePlayerStatusStore = defineStore('player', () => {
 
   return { 
     playerStatus, 
-    toggleFullScren, 
-    toggleMute, 
-    togglePlay, 
+    toggleVideoFullScreen, 
+    toggleVideoMute, 
+    togglePlayVideo, 
     setChannel, 
     setAvailableChannels, 
     volumeDown, 

@@ -17,6 +17,10 @@ import { usePlayerStatusStore } from '@/stores/player'
 import { useLanguageStore } from '@/stores/language'
 import { useVisibilityStore } from '@/stores/visibility'
 
+const props = defineProps({
+  onVideoPlay: Function
+})
+
 const router = useRouter();
 const iconSize = 20
 const volumeBar = ref(null)
@@ -36,7 +40,7 @@ const handleTopMenuClick = () => {
 }
 
 const handlePlayClick = () => {
-  console.log('handlePlayClick')
+  props.onVideoPlay()
 }
 
 const handleVolumeClick = () => {

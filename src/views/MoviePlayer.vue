@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import Overlay from '@/components/Overlay.vue'
 import OverlayHorizontal from '@/components/OverlayHorizontal.vue'
@@ -11,9 +11,10 @@ import { useLanguageStore } from '@/stores/language.js'
 import { useMouseMovementListener, useTimeOutListener, useKeyListener } from '@/utils/listeners'
 
 const { visibilityStatus, showVideoControls, hideVideoControls, showChannelsMenu } = useVisibilityStore()
-const { playerStatus, setChannel } = usePlayerStatusStore()
+const { playerStatus, setChannel, togglePlayVideo, toggleVideoMute, toggleVideoFullScreen } = usePlayerStatusStore()
 const { languageStatus } = useLanguageStore()
 const router = useRouter()
+const videoRef = ref(null)
 
 const { reset: resetOverlayTimeOut } = useTimeOutListener(() => {
   hideVideoControls()
@@ -29,6 +30,40 @@ useMouseMovementListener(() => {
 const findChannelIndex = (availableChannels, selectedChannel) => {
   const channelIdx = availableChannels.findIndex(ch => ch.number === selectedChannel.number)
   return channelIdx === -1 ? 0 : channelIdx
+}
+
+const togglePlay = () => {
+  const video = videoRef.value
+  if (!video) return
+
+  if (video.paused) {
+    video.play()
+    togglePlayVideo()
+  } else {
+    video.pause()
+    togglePlayVideo()
+  }
+}
+
+function toggleMute() {
+  const video = videoRef.value
+  if (!video) return
+
+  video.muted = !video.muted
+  toggleVideoMute()
+}
+
+function toggleFullScreen() {
+  const video = videoRef.value
+  if (!video) return
+
+  if (document.fullscreenElement) {
+    document.exitFullscreen()
+  } else {
+    video.requestFullscreen()
+  }
+
+  toggleVideoFullScreen()
 }
 
 useKeyListener((e) => {
@@ -61,18 +96,29 @@ useKeyListener((e) => {
 
       showChannelsMenu()
       break
+    case 'm':
+      toggleMute()
+      break
+    case 'f':
+      toggleFullScreen()
+      break
   }
-}, ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Escape'])
+}, ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Escape', 'm', 'f'])
+
 </script>
 
 <template>
   <main class="movie_player--page">
     <section class="movie_player--player">
-      <img src="/images/playing-movie_bg_image.webp" />
+      <video 
+        ref="videoRef"
+        src="/videos/SampleVideo_1280x720_1mb.mp4" 
+        class="video"
+      />
     </section>
     <Transition name="fade">
       <Overlay v-if="visibilityStatus.areControlsVisible">
-        <VideoControlOverlay />
+        <VideoControlOverlay :onVideoPlay="togglePlay" />
       </Overlay>
     </Transition>
     <Transition name="fade">
@@ -96,7 +142,7 @@ useKeyListener((e) => {
   display: flex;
   align-items: center;
 
-  img {
+  video {
     width: 100vw;
     max-width: 1440px;
     height: auto;
