@@ -120,7 +120,7 @@ onMounted(() => {
 
 onBeforeUnmount(() => {
   if (videoRef.value) {
-    videoRef.value.removeEventListener('ended', onVideoEnded)
+    videoRef.value.removeEventListener('ended', () => togglePlayVideo())
   }
 })
 </script>
