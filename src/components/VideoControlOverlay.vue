@@ -123,6 +123,10 @@ onUnmounted(() => {
           <Transition name="fade">
             <div v-if="visibilityStatus.isVolumeBarVisible" class="volume-bar" ref="volumeBar" @mousedown="startDrag">
               <div class="level" :style="{ width: playerStatus.volume + '%' }"></div>
+              <div
+                class="ball-tip"
+                :style="{ left: playerStatus.volume + '%' }"
+              ></div>
             </div>
           </Transition>
         </div>
@@ -226,6 +230,27 @@ onUnmounted(() => {
         background-color: $color-primary;
         height: 100%;
         border-radius: $radius-sm;
+      }
+
+      .ball-tip {
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background-color: $color-primary;
+        display: none;
+        pointer-events: none; 
+      }
+
+      &:hover {
+        cursor: pointer;
+        transform: scale(1.02);
+
+        .ball-tip {
+          display: block;
+        }
       }
     }
   }
