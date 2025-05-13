@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from 'vue'
+import { computed, ref, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router';
 
 import RoundedButton from '@/components/RoundedButton.vue'
@@ -19,7 +19,9 @@ import { useVisibilityStore } from '@/stores/visibility'
 
 const router = useRouter();
 const iconSize = 20
-const { playerStatus } = usePlayerStatusStore()
+const volumeBar = ref(null)
+let isDragging = false
+const { playerStatus, setVolume } = usePlayerStatusStore()
 const { languageStatus, setSelectedLanguage } = useLanguageStore()
 const { 
   visibilityStatus, 
@@ -53,6 +55,40 @@ const formattedChannel = computed(() => {
   const number = playerStatus.selectedChannel.channelNumber;
   return number >= 10 ? number : `0${number}`;
 });
+
+function updateVolumeFromEvent(e) {
+  if (!volumeBar.value) return
+
+  const rect = volumeBar.value.getBoundingClientRect() // element dimensions and position
+  let newVolume = ((e.clientX - rect.left) / rect.width) * 100 // cursor position relative to bar's width
+  newVolume = Math.max(0, Math.min(100, newVolume)) // avoid over and under values
+
+  setVolume(newVolume)
+}
+
+function startDrag(e) {
+  isDragging = true
+  updateVolumeFromEvent(e)
+  window.addEventListener('mousemove', onDrag)
+  window.addEventListener('mouseup', stopDrag)
+}
+
+function onDrag(e) {
+  if (isDragging) {
+    updateVolumeFromEvent(e)
+  }
+}
+
+function stopDrag() {
+  isDragging = false
+  window.removeEventListener('mousemove', onDrag)
+  window.removeEventListener('mouseup', stopDrag)
+}
+
+onUnmounted(() => {
+  window.removeEventListener('mousemove', onDrag)
+  window.removeEventListener('mouseup', stopDrag)
+})
 </script>
 
 <template>
@@ -85,8 +121,8 @@ const formattedChannel = computed(() => {
           </RoundedButton> 
 
           <Transition name="fade">
-            <div v-if="visibilityStatus.isVolumeBarVisible" class="volume-bar">
-              <div class="level"></div>
+            <div v-if="visibilityStatus.isVolumeBarVisible" class="volume-bar" ref="volumeBar" @mousedown="startDrag">
+              <div class="level" :style="{ width: playerStatus.volume + '%' }"></div>
             </div>
           </Transition>
         </div>
@@ -188,8 +224,7 @@ const formattedChannel = computed(() => {
       .level {
         position: absolute;
         background-color: $color-primary;
-        height: 8px;
-        width: 60%;
+        height: 100%;
         border-radius: $radius-sm;
       }
     }

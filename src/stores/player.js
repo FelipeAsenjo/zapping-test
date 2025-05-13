@@ -31,7 +31,7 @@ export const usePlayerStatusStore = defineStore('player', () => {
   }
 
   function setVolume(volume) {
-    if(volume >= 100 || volumen <= 0) return
+    if(volume >= 100 || volume <= 0) return
 
     playerStatus.volume = volume
   }
