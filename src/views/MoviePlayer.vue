@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch, onMounted } from 'vue'
+import { ref, watch, onMounted, onBeforeUnmount } from 'vue'
 import { useRouter } from 'vue-router'
 import Overlay from '@/components/Overlay.vue'
 import OverlayHorizontal from '@/components/OverlayHorizontal.vue'
@@ -114,6 +114,13 @@ watch(() => playerStatus.volume, (newVolume) => {
 onMounted(() => {
   if (videoRef.value) {
     videoRef.value.volume = playerStatus.volume / 100
+    videoRef.value.addEventListener('ended', () => togglePlayVideo())
+  }
+})
+
+onBeforeUnmount(() => {
+  if (videoRef.value) {
+    videoRef.value.removeEventListener('ended', onVideoEnded)
   }
 })
 </script>
