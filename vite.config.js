@@ -7,6 +7,10 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: '/demo/app/web/zapping-video',
+  build: {
+    manifest: true,
+  },
   plugins: [
     vue(),
     vueJsx(),
